@@ -26,6 +26,7 @@ It saves you the trouble of going to sites that may be suspicious, as it saves y
 ## Installation
 Download dLearn by cloning the Git repository:
 <br />```$ git clone https://github.com/Dark-Night0/dLearn.git```
+<br />```$ cd dLearn```
 <br />```$ pip install -r requirements.txt```
 
 ## Usage
