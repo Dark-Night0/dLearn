@@ -381,11 +381,9 @@ elif check_1 == '2':
 
         print(f"{green}Ensure that the Internet connection is stable{nc}\n")
         q = str(quality())
-        
+        save_file = Dir("Videos")
         for i in x:
             yt=YouTube(i)
-            save_file = Dir("Videos")
-
             # get the first video stream that matches the file extension and resolution
             stream = yt.streams.filter(file_extension='mp4', resolution=f'{q}p').first()
 
