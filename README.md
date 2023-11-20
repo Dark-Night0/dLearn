@@ -15,7 +15,7 @@ It saves you the trouble of going to sites that may be suspicious, as it saves y
 - [ ]  console user interface (CLI) will be supported , To be able to enter parameters faster
 - [ ]   You can compress files
 - [ ]   Download videos from other sources ( Udemy )
-- [ ]   Download videos from other sources ( Mega)
+- [ ]   Download videos from other sources ( Mega )
 - [x]   Convert videos to music (MP3)
 - [x]    And More ...
 - [x]    Things that make it easier for users
