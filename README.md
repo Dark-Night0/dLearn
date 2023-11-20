@@ -14,7 +14,8 @@ It saves you the trouble of going to sites that may be suspicious, as it saves y
 - [x]   More than one other quality will be added to the videos
 - [ ]  console user interface (CLI) will be supported , To be able to enter parameters faster
 - [ ]   You can compress files
-- [ ]   Download videos from other sources (Udemy , Mega)
+- [ ]   Download videos from other sources ( Udemy )
+- [ ]   Download videos from other sources ( Mega)
 - [x]   Convert videos to music (MP3)
 - [x]    And More ...
 - [x]    Things that make it easier for users
