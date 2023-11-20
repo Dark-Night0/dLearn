@@ -11,7 +11,7 @@ It saves you the trouble of going to sites that may be suspicious, as it saves y
 *	You can download a specific video (Case 1)
 
 ## Upcoming updates
-- [ ]   More than one other quality will be added to the videos
+- [x]   More than one other quality will be added to the videos
 - [ ]  console user interface (CLI) will be supported , To be able to enter parameters faster
 - [ ]   You can compress files
 - [ ]   Download videos from other sources (Udemy , Mega)
