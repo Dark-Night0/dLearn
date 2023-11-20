@@ -1,3 +1,10 @@
+proglog
+numpy
+imageio
+imageio-ffmpeg
+pillow
+chardet
+requests
+tqdm
 pytube
 moviepy
-re
