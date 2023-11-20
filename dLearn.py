@@ -23,6 +23,7 @@ print(f'''
                 {red}Author : {blue}Mohammed Khalid
                 {red}Version: {green}1.1.0
 ''')
+
 def check_network():
     while True:
         try:
@@ -31,6 +32,7 @@ def check_network():
 
         except requests.exceptions.ConnectionError :
             print(f"{green}Ensure that the Internet connection is stable{nc}\n")
+            time.sleep(10)
 check_network()
 
 # Disply Slow Words
@@ -98,6 +100,7 @@ def Dir(name):
 
 def Display ():
     i= 1
+    check_network()
     for video in playlist.videos:
         print (f"{green}[ {i} ] {nc}{video.title}")
         i+=1
@@ -172,8 +175,8 @@ def select_links(execlude , st):
 # path_file => This variable contains the path to launch the Learn tool to create a folder and store within it 
 def Down_sound(arr , file):
     i = 1
-    check_network()
     for url in arr:
+        check_network()
         yt = YouTube(url)
         stream = yt.streams.get_highest_resolution()
         stream.download()
@@ -201,8 +204,8 @@ def Down_sound(arr , file):
 # file    => contains the path to launch the Learn tool to create a folder and store within it  
 def download(q , arr, file) :
     i = 1
-    check_network()
     for url in arr:
+        check_network()
         # create a Video object
         yt=YouTube(url)
         # get the first video stream that matches the file extension and resolution
