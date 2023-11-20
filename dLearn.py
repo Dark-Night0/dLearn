@@ -1,5 +1,5 @@
 from pytube import Playlist , YouTube
-import time , sys , os 
+import time , sys , os ,requests 
 from re import search
 from moviepy.editor import *
 
@@ -23,6 +23,15 @@ print(f'''
                 {red}Author : {blue}Mohammed Khalid
                 {red}Version: {green}1.1.0
 ''')
+def check_network():
+    while True:
+        try:
+            requests.get("https://google.com")
+            break
+
+        except requests.exceptions.ConnectionError :
+            print(f"{green}Ensure that the Internet connection is stable{nc}\n")
+check_network()
 
 # Disply Slow Words
 def displaySlow(words , date=0.01):
@@ -42,12 +51,12 @@ displaySlow(word_1)
 check_1 = input("")
 
 
-# # Error handle
-# def handle_error(type, value, traceback):
-#     error = f"\n{red}Error !! , Please enter the data correctly , Or check your internet connection 2>"
-#     displaySlow(error)
+# Error handle
+def handle_error(type, value, traceback):
+    error = f"\n{red}Error !! , Please enter the data correctly , Or check your internet connection 2>"
+    displaySlow(error)
 
-# # sys.excepthook = handle_error
+sys.excepthook = handle_error
 
 # Choose Quality Videos
 def quality():
@@ -96,7 +105,7 @@ def Display ():
 
 # Displaying video titles from the playlist if you want to exclude certain videos
 def Display_Titel_Videos():
-    
+    check_network()
     Display()
     x = f"{green}\n    Example: {red}2,5,8,10-15 {blue}(range exclude: 10 To 15){nc}"
     displaySlow(x)
@@ -131,7 +140,7 @@ def remove_spaces(string):
         t = v - 1
         n.append(t)
 
-
+    check_network()
     return set(n)
 
 
@@ -141,6 +150,7 @@ def remove_spaces(string):
 #  st       => The use case, as the same function is used 
 #              for more than one form, [1] excluding certain links, [2] downloading all links
 def select_links(execlude , st):
+    check_network()
     arr = []
     ex = execlude
     i = 1
@@ -162,7 +172,7 @@ def select_links(execlude , st):
 # path_file => This variable contains the path to launch the Learn tool to create a folder and store within it 
 def Down_sound(arr , file):
     i = 1
-
+    check_network()
     for url in arr:
         yt = YouTube(url)
         stream = yt.streams.get_highest_resolution()
@@ -191,7 +201,7 @@ def Down_sound(arr , file):
 # file    => contains the path to launch the Learn tool to create a folder and store within it  
 def download(q , arr, file) :
     i = 1
-
+    check_network()
     for url in arr:
         # create a Video object
         yt=YouTube(url)
@@ -224,11 +234,13 @@ if check_1 == '1':
         {red}>>>{nc} '''
     displaySlow(word_m)
     cheack_choose = input("")
+    check_network()
 
 
 ##### PlayList Sound ######
     if cheack_choose == '1':
         x = f"{green}Enter URL PlayList Sound -> {nc}"
+        
         displaySlow(x)
         playlist_url = input("")
 
@@ -241,23 +253,24 @@ if check_1 == '1':
         check_sbicific_sound = input('')
 
         if check_sbicific_sound.lower().replace(" " , "") == 'y' or check_sbicific_sound.lower().replace(" " , "") == "yes":
-
+            check_network()
             num_mu = remove_spaces(Display_Titel_Videos()) 
 
             arr = select_links(num_mu , True)
             save_file = Dir(playlist.title)
+            check_network()
             Down_sound(arr , save_file)
 
 ######## Exclude Sound ########
         elif check_sbicific_sound.lower().replace(" ", "") == 'n' or check_sbicific_sound.lower().replace(" ", "") == 'no':
-            
+            check_network()
             playlist = Playlist(playlist_url)
 
             print(f"{green}Ensure that the Internet connection is stable{nc}\n")
 
             arr = select_links(remove_spaces("0") , False)
             save_file = Dir(f"{playlist.title}")
-
+            check_network()
             Down_sound(arr , save_file)
 ####
 
@@ -276,7 +289,7 @@ if check_1 == '1':
         count =1
         
         for i in x:
-
+            check_network()
             yt = YouTube(i)
             stream = yt.streams.get_highest_resolution()
             stream.download()
@@ -337,32 +350,36 @@ elif check_1 == '2':
 
         if check_sbicific_videos.lower().replace(" " , "") == 'y' or check_sbicific_videos .lower().replace(" " , "") == 'yes':
             
-            # create a Playlist object
+            check_network()
             playlist = Playlist(playlist_url)
             print(f"{green}Ensure that the Internet connection is stable{nc}\n")
-            
+            check_network()
             num_vid = remove_spaces(Display_Titel_Videos())
-            
+            check_network()
             arr = select_links(num_vid,True)
             q = str(quality())
             
             save_file = Dir(playlist.title)
+
             download(q , arr , save_file)
+
 ###
 
 
 ######## Don't Exclude Videos ########
 
         elif check_sbicific_videos.lower().replace(" " , "") == 'n' or check_sbicific_videos.lower().replace(" " , "") == 'no':
-            
+        
             playlist = Playlist(playlist_url)
             q = str(quality())
             print(f"{green}Ensure that the Internet connection is stable{nc}\n")
-            
+            check_network()    
             arr = select_links(remove_spaces("0"),False)
             save_file = Dir(playlist.title)
 
             download(q , arr , save_file)
+    
+
 ###
 
 
@@ -382,7 +399,10 @@ elif check_1 == '2':
         print(f"{green}Ensure that the Internet connection is stable{nc}\n")
         q = str(quality())
         save_file = Dir("Videos")
+
         for i in x:
+
+            check_network()
             yt=YouTube(i)
             # get the first video stream that matches the file extension and resolution
             stream = yt.streams.filter(file_extension='mp4', resolution=f'{q}p').first()
@@ -392,6 +412,7 @@ elif check_1 == '2':
             print (f"{green}[ {count} ] {nc}{filename}")
             stream.download(output_path=save_file,filename=filename)
             count +=1
+        
         
         x= f"{green}Download completed successfully{nc}, injoy"
         displaySlow(x)
