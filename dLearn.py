@@ -54,11 +54,11 @@ check_1 = input("")
 
 
 # Error handle
-def handle_error(type, value, traceback):
-    error = f"\n{red}Error !! , Please enter the data correctly , Or check your internet connection 2>"
-    displaySlow(error)
+# def handle_error(type, value, traceback):
+#     error = f"\n{red}Error !! , Please enter the data correctly , Or check your internet connection 2>"
+#     displaySlow(error)
 
-sys.excepthook = handle_error
+# sys.excepthook = handle_error
 
 # Choose Quality Videos
 def quality():
@@ -185,6 +185,7 @@ def Down_sound(arr , file):
         video_file = VideoFileClip(stream.default_filename)
         audio_file = video_file.audio
         file_name = f"{yt.title}.mp3"
+        filename = filename.replace('/' , '-')
         file_path = f"{os.path.join(file , file_name)}"
 
         audio_file.write_audiofile(file_path, bitrate="320k")
@@ -213,6 +214,7 @@ def download(q , arr, file) :
 
         # download the video to the specified save path with the title as the filename
         vname = f'{yt.title}.mp4'
+        vname = vname.replace('/' , '-')
         print(f"{green}[ {i} ] {nc}{vname}")
         
         # argument The output_path= Should be string Data type ,in case download user PlayList Arabic 
@@ -301,6 +303,7 @@ if check_1 == '1':
             audio_file = video_file.audio
             
             file_name = f"{yt.title}.mp3"
+            filename = filename.replace('/' , '-')
             path = Dir("Sound")
 
             file_path = f"{os.path.join( path , file_name)}"
@@ -412,7 +415,9 @@ elif check_1 == '2':
 
             # download the video to the specified save path with the title as the filename
             filename = f'{yt.title}.mp4'
+            filename = filename.replace('/' , '-')
             print (f"{green}[ {count} ] {nc}{filename}")
+
             stream.download(output_path=save_file,filename=filename)
             count +=1
         
